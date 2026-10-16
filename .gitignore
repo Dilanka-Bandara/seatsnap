@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+**/target/
+**/node_modules/
+**/.next/
+**/out/
+**/coverage/
+**/playwright-report/
+**/test-results/
+*.log
+*.tsbuildinfo
+.idea/
+.vscode/
+.DS_Store
+.scaffold/

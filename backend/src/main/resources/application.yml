@@ -1,0 +1,45 @@
+server:
+  port: ${SERVER_PORT:8080}
+spring:
+  application:
+    name: seatsnap
+  profiles:
+    default: dev
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/seatsnap}
+    username: ${POSTGRES_USER:seatsnap}
+    password: ${POSTGRES_PASSWORD}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate.jdbc.time_zone: UTC
+  data:
+    web:
+      pageable:
+        max-page-size: 50
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+  mail:
+    host: ${MAIL_HOST:localhost}
+    port: ${MAIL_PORT:1025}
+  thymeleaf:
+    check-template-location: false
+  mvc:
+    problemdetails:
+      enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      show-details: when_authorized
+app:
+  frontend-origin: ${FRONTEND_ORIGIN:http://localhost:3000}
+  hold-duration: PT10M
